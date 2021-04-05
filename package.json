@@ -1,0 +1,25 @@
+{
+  "name": "mernshoplearn",
+  "version": "1.0.0",
+  "description": "MERN shopping cart learn",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server/server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TanyaRan/MernShopLearn.git"
+  },
+  "author": "TanyaTsv",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/TanyaRan/MernShopLearn/issues"
+  },
+  "homepage": "https://github.com/TanyaRan/MernShopLearn#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
