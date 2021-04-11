@@ -9,6 +9,7 @@ const authUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body
 
   const user = await User.findOne({ email })
+
   if (user && (await user.matchPassword(password))) {
     res.json({
       _id: user._id,
@@ -34,6 +35,16 @@ const registerUser = asyncHandler(async (req, res) => {
   if (userExists) {
     res.status(400)
     throw new Error('User already exists')
+  }
+
+  if (name === '' && email === '' && password === '') {
+    res.status(400)
+    throw new Error('Add register data')
+  }
+
+  if (name === '' || email === '' || password === '') {
+    res.status(400)
+    throw new Error('Fields are required')
   }
 
   const user = await User.create({
@@ -75,4 +86,4 @@ const getUserProfile = asyncHandler(async (req, res) => {
   }
 })
 
-export { authUser, getUserProfile, registerUser }
+export { authUser, registerUser, getUserProfile }
