@@ -65,7 +65,7 @@ const updateOrderToPaid = asyncHandler(async (req, res) => {
     order.paymentResult = {
       id: req.body.id,
       status: req.body.status,
-      update_time: req.body.update_time,
+      updated_time: req.body.updated_time,
       email_address: req.body.payer.email_address
     }
 
