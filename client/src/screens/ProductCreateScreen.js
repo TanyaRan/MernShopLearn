@@ -6,12 +6,10 @@ import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
 import FormContainer from '../components/FormContainer'
-import { listProductDetails, updateProduct } from '../actions/productActions'
-import { PRODUCT_UPDATE_RESET } from '../constants/productConstants'
+import { listProducts, createProduct } from '../actions/productActions'
+import { PRODUCT_CREATE_RESET } from '../constants/productConstants'
 
-const ProductEditScreen = ({ match, history }) => {
-  const productId = match.params.id
-
+const ProductCreateScreen = ({ history }) => {
   const [name, setName] = useState('')
   const [price, setPrice] = useState(0)
   const [image, setImage] = useState('')
@@ -26,38 +24,21 @@ const ProductEditScreen = ({ match, history }) => {
   const userLogin = useSelector(state => state.userLogin)
   const { userInfo } = userLogin
 
-  const productDetails = useSelector(state => state.productDetails)
-  const { loading, error, product } = productDetails
-
-  const productUpdate = useSelector(state => state.productUpdate)
-  const {
-    loading: loadingUpdate,
-    error: errorUpdate,
-    success: successUpdate
-  } = productUpdate
+  const productCreate = useSelector(state => state.productCreate)
+  const { loading, error, success } = productCreate
 
   useEffect(() => {
     if (!userInfo || !userInfo.isAdmin) {
       history.push('/login')
     }
 
-    if (successUpdate) {
-      dispatch({ type: PRODUCT_UPDATE_RESET })
-      history.push('/admin/productlist')
+    if (success) {
+      dispatch({ type: PRODUCT_CREATE_RESET })
+      history.push(`/admin/productlist`)
     } else {
-      if (!product.name || product._id !== productId) {
-        dispatch(listProductDetails(productId))
-      } else {
-        setName(product.name)
-        setPrice(product.price)
-        setImage(product.image)
-        setBrand(product.brand)
-        setCategory(product.category)
-        setCountInStock(product.countInStock)
-        setDescription(product.description)
-      }
+      dispatch(listProducts())
     }
-  }, [dispatch, history, productId, product, userInfo, successUpdate])
+  }, [dispatch, history, userInfo, success])
 
   const uploadFileHandler = async e => {
     const file = e.target.files[0]
@@ -85,16 +66,15 @@ const ProductEditScreen = ({ match, history }) => {
   const submitHandler = e => {
     e.preventDefault()
     dispatch(
-      updateProduct({
-        _id: productId,
+      createProduct(
         name,
         price,
+        description,
         image,
         brand,
         category,
-        description,
         countInStock
-      })
+      )
     )
   }
 
@@ -104,9 +84,7 @@ const ProductEditScreen = ({ match, history }) => {
         Go Back
       </Link>
       <FormContainer>
-        <h1>Edit Product</h1>
-        {loadingUpdate && <Loader />}
-        {errorUpdate && <Message variant='danger'>{errorUpdate}</Message>}
+        <h1>Create Product</h1>
         {loading ? (
           <Loader />
         ) : error ? (
@@ -182,7 +160,7 @@ const ProductEditScreen = ({ match, history }) => {
                 onChange={e => setDescription(e.target.value)}></Form.Control>
             </Form.Group>
             <Button type='submit' variant='primary'>
-              Update Product
+              Create Product
             </Button>
           </Form>
         )}
@@ -191,4 +169,4 @@ const ProductEditScreen = ({ match, history }) => {
   )
 }
 
-export default ProductEditScreen
+export default ProductCreateScreen

@@ -6,10 +6,10 @@ import Message from '../components/Message'
 import Loader from '../components/Loader'
 import {
   listProducts,
-  deleteProduct,
-  createProduct
+  deleteProduct
+  // createProduct
 } from '../actions/productActions'
-import { PRODUCT_CREATE_RESET } from '../constants/productConstants'
+// import { PRODUCT_CREATE_RESET } from '../constants/productConstants'
 
 const ProductListScreen = ({ history }) => {
   const dispatch = useDispatch()
@@ -24,36 +24,36 @@ const ProductListScreen = ({ history }) => {
     success: successDelete
   } = productDelete
 
-  const productCreate = useSelector(state => state.productCreate)
-  const {
-    loading: loadingCreate,
-    error: errorCreate,
-    success: successCreate,
-    product: createdProduct
-  } = productCreate
+  // const productCreate = useSelector(state => state.productCreate)
+  // const {
+  //   loading: loadingCreate,
+  //   error: errorCreate,
+  //   success: successCreate,
+  //   product: createdProduct
+  // } = productCreate
 
   const userLogin = useSelector(state => state.userLogin)
   const { userInfo } = userLogin
 
   useEffect(() => {
-    dispatch({ type: PRODUCT_CREATE_RESET })
+    // dispatch({ type: PRODUCT_CREATE_RESET })
 
     if (!userInfo || !userInfo.isAdmin) {
       history.push('/login')
     }
 
-    if (successCreate) {
-      history.push(`/admin/product/${createdProduct._id}/edit`)
-    } else {
-      dispatch(listProducts())
-    }
+    // if (successCreate) {
+    //   history.push(`/admin/product/${createdProduct._id}/edit`)
+    // } else {
+    dispatch(listProducts())
+    // }
   }, [
     dispatch,
     history,
     userInfo,
-    successDelete,
-    successCreate,
-    createdProduct
+    successDelete
+    // successCreate,
+    // createdProduct
   ])
 
   const deleteHandler = id => {
@@ -62,9 +62,9 @@ const ProductListScreen = ({ history }) => {
     }
   }
 
-  const createProductHandler = () => {
-    dispatch(createProduct())
-  }
+  // const createProductHandler = () => {
+  //   dispatch(createProduct())
+  // }
 
   return (
     <>
@@ -73,15 +73,20 @@ const ProductListScreen = ({ history }) => {
           <h1>Products</h1>
         </Col>
         <Col className='text-right'>
-          <Button className='my-3' onClick={createProductHandler}>
+          {/* <Button className='my-3' onClick={createProductHandler}>
             <i className='fas fa-plus'></i> Create Product
-          </Button>
+          </Button> */}
+          <LinkContainer to={`/admin/product/create`}>
+            <Button className='my-3'>
+              <i className='fas fa-plus'></i> Create Product
+            </Button>
+          </LinkContainer>
         </Col>
       </Row>
       {loadingDelete && <Loader />}
       {errorDelete && <Message variant='danger'>{errorDelete}</Message>}
-      {loadingCreate && <Loader />}
-      {errorCreate && <Message variant='danger'>{errorCreate}</Message>}
+      {/* {loadingCreate && <Loader />}
+      {errorCreate && <Message variant='danger'>{errorCreate}</Message>} */}
       {loading ? (
         <Loader />
       ) : error ? (

@@ -124,13 +124,13 @@ export const createProduct = (
     const { data } = await axios.post(
       `/api/products`,
       {
-        name,
-        price,
-        description,
-        image,
-        brand,
-        category,
-        countInStock,
+        name: name,
+        price: price,
+        description: description,
+        image: image,
+        brand: brand,
+        category: category,
+        countInStock: countInStock,
         user: userInfo._id
       },
       config

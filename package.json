@@ -1,7 +1,7 @@
 {
-  "name": "mernshoplearn",
+  "name": "merntravel",
   "version": "1.0.0",
-  "description": "MERN shopping cart learn",
+  "description": "MERN project - Travel",
   "main": "server.js",
   "type": "module",
   "scripts": {
@@ -14,21 +14,22 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/TanyaRan/MernShopLearn.git"
+    "url": "git+https://github.com/TanyaRan/MernTravel.git"
   },
   "author": "TanyaTsv",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/TanyaRan/MernShopLearn/issues"
+    "url": "https://github.com/TanyaRan/MernTravel/issues"
   },
-  "homepage": "https://github.com/TanyaRan/MernShopLearn#readme",
+  "homepage": "https://github.com/TanyaRan/MernTravel#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-async-handler": "^1.1.4",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.12.3"
+    "mongoose": "^5.12.3",
+    "multer": "^1.4.2"
   },
   "devDependencies": {
     "colors": "^1.4.0",
