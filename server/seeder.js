@@ -55,4 +55,6 @@ if (process.argv[2] === '-d') {
 }
 
 // node server/seeder     -> insert
-// noe server/seeder -d   -> delete
+// node server/seeder -d   -> delete
+
+// npm run data:import
