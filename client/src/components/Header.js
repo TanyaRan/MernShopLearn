@@ -22,7 +22,7 @@ const Header = () => {
         <Container>
           <LinkContainer to='/'>
             <Navbar.Brand>
-              <i class='fas fa-hiking'></i> Happy in Wild
+              <i className='fas fa-hiking'></i> Happy in Wild
             </Navbar.Brand>
           </LinkContainer>
           <Navbar.Toggle aria-controls='basic-navbar-nav' />
@@ -58,8 +58,8 @@ const Header = () => {
         <Navbar bg='secondary' variant='light' expand='lg' collapseOnSelect>
           <Container>
             <Navbar.Brand>
-              <i class='fas fa-user-cog' style={{ color: '#eea29a' }}></i> Admin
-              Menu
+              <i className='fas fa-user-cog' style={{ color: '#eea29a' }}></i>{' '}
+              Admin Menu
             </Navbar.Brand>
 
             <Navbar.Toggle aria-controls='basic-navbar-nav' />
@@ -75,14 +75,14 @@ const Header = () => {
                 </LinkContainer>
                 <LinkContainer to='/admin/productlist'>
                   <Nav.Link>
-                    <i class='fas fa-gift' style={{ color: '#eea29a' }}></i>{' '}
+                    <i className='fas fa-gift' style={{ color: '#eea29a' }}></i>{' '}
                     Products
                   </Nav.Link>
                 </LinkContainer>
                 <LinkContainer to='/admin/orderlist'>
                   <Nav.Link>
                     <i
-                      class='fas fa-money-check-alt'
+                      className='fas fa-money-check-alt'
                       style={{ color: '#eea29a' }}></i>{' '}
                     Orders
                   </Nav.Link>

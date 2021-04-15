@@ -19,7 +19,6 @@ import {
   ORDER_DELIVER_SUCCESS,
   ORDER_DELIVER_FAIL
 } from '../constants/orderConstants'
-import { logout } from './userActions'
 
 export const createOrder = order => async (dispatch, getState) => {
   try {
@@ -163,9 +162,6 @@ export const deliverOrder = order => async (dispatch, getState) => {
           ? error.response.data.message
           : error.message
     })
-    // if (message === 'Not authorized, token failed') {
-    //   dispatch(logout())
-    // }
   }
 }
 
