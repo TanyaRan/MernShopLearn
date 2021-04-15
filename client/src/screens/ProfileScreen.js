@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Form, Button, Row, Col, Table } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
+import moment from 'moment'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
 import { getUserDetails, updateUserProfile } from '../actions/userActions'
@@ -123,11 +124,11 @@ const ProfileScreen = ({ history }) => {
               {orders.map(order => (
                 <tr key={order._id}>
                   <td>{order._id}</td>
-                  <td>{order.createdAt.substring(0, 10)}</td>
+                  <td>{moment(order.createdAt).format('DD.MM.YYYY')}</td>
                   <td>{order.totalPrice}</td>
                   <td>
                     {order.isPaid ? (
-                      order.paidAt.substring(0, 10)
+                      moment(order.paidAt).format('DD.MM.YYYY')
                     ) : (
                       <i
                         className='fas fa-times'
@@ -136,7 +137,7 @@ const ProfileScreen = ({ history }) => {
                   </td>
                   <td>
                     {order.isDelivered ? (
-                      order.deliveredAt.substring(0, 10)
+                      moment(order.deliveredAt).format('DD.MM.YYYY')
                     ) : (
                       <i
                         className='fas fa-times'

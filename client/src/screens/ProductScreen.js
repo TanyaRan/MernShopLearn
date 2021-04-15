@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
+import moment from 'moment'
 import { Row, Col, Image, ListGroup, Card, Button, Form } from 'react-bootstrap'
 import Rating from '../components/Rating'
 import Loader from './../components/Loader'
@@ -146,7 +147,7 @@ const ProductScreen = ({ history, match }) => {
                   <ListGroup.Item key={review.createdAt}>
                     <p>
                       <strong>{review.ownerName} </strong>
-                      {review.createdAt.substring(0, 10)}
+                      {moment(review.createdAt).format('DD.MM.YYYY')}
                     </p>
                     <Rating value={review.rating} />
                     <p>{review.comment}</p>
