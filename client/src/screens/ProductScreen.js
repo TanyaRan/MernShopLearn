@@ -57,9 +57,6 @@ const ProductScreen = ({ history, match }) => {
 
   return (
     <>
-      <Link className='btn btn-secondary my-3' to='/'>
-        Go Back
-      </Link>
       {loading ? (
         <Loader />
       ) : error ? (
@@ -67,32 +64,18 @@ const ProductScreen = ({ history, match }) => {
       ) : (
         <>
           <Row>
-            <Col md={6}>
+            <Col md={8}>
               <Image src={product.image} alt={product.name} fluid />
             </Col>
-            <Col md={3}>
-              <ListGroup variant='flush'>
-                <ListGroup.Item>
-                  <h3>{product.name}</h3>
-                </ListGroup.Item>
-                <ListGroup.Item>
-                  <Rating
-                    value={product.rating}
-                    text={`${product.numReviews} reviews`}
-                  />
-                </ListGroup.Item>
-                <ListGroup.Item>Price: ${product.price}</ListGroup.Item>
-                <ListGroup.Item>
-                  Description: {product.description}
-                </ListGroup.Item>
-              </ListGroup>
-            </Col>
-            <Col md={3}>
+            <Col md={4}>
+              <Link className='btn btn-secondary my-3' to='/'>
+                <i className='fas fa-angle-double-left'></i> Go Back
+              </Link>
               <Card>
                 <ListGroup variant='flush'>
                   <ListGroup.Item>
                     <Row>
-                      <Col>Price:</Col>
+                      <Col>Price: </Col>
                       <Col>
                         <strong>${product.price}</strong>
                       </Col>
@@ -100,16 +83,36 @@ const ProductScreen = ({ history, match }) => {
                   </ListGroup.Item>
                   <ListGroup.Item>
                     <Row>
-                      <Col>Status:</Col>
+                      <Col>Start Date: </Col>
                       <Col>
-                        {product.countInStock > 0 ? 'In Stock' : 'Out Of Stock'}
+                        <strong>
+                          {moment(product.startDate).format('DD.MM.YYYY')}
+                        </strong>
+                      </Col>
+                    </Row>
+                  </ListGroup.Item>
+                  <ListGroup.Item>
+                    <Row>
+                      <Col>Number of Days: </Col>
+                      <Col>
+                        <strong>{product.daysNumber}</strong>
+                      </Col>
+                    </Row>
+                  </ListGroup.Item>
+                  <ListGroup.Item>
+                    <Row>
+                      <Col>Status: </Col>
+                      <Col>
+                        {product.countInStock > 0
+                          ? 'Can be booked'
+                          : 'All reserved'}
                       </Col>
                     </Row>
                   </ListGroup.Item>
                   {product.countInStock > 0 && (
                     <ListGroup.Item>
                       <Row>
-                        <Col>Qty</Col>
+                        <Col>How many people: </Col>
                         <Col>
                           <Form.Control
                             as='select'
@@ -141,8 +144,40 @@ const ProductScreen = ({ history, match }) => {
             </Col>
           </Row>
           <Row>
-            <Col md={6}>
-              <h2>Reviews</h2>
+            <Col>
+              <ListGroup variant='flush'>
+                <ListGroup.Item>
+                  <h3>{product.name}</h3>
+                </ListGroup.Item>
+                <ListGroup.Item>
+                  <Button variant='outlined-light' className='mx-2'>
+                    <strong>
+                      Start Date:
+                      {moment(product.startDate).format('DD.MM.YYYY')}
+                    </strong>
+                  </Button>
+                  <Button variant='outlined-light' className='mx-2'>
+                    <strong>Lasts: {product.daysNumber} days</strong>
+                  </Button>
+                  <Button variant='outlined-light' className='mx-2'>
+                    <strong className='ml-3'>Price: ${product.price}</strong>
+                  </Button>
+                  <Button variant='outlined-light' className='ml-5'>
+                    <Rating
+                      value={product.rating}
+                      text={`${product.numReviews} reviews`}
+                    />
+                  </Button>
+                </ListGroup.Item>
+                <ListGroup.Item>
+                  <h5>{product.description}</h5>
+                </ListGroup.Item>
+              </ListGroup>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <h3>Reviews</h3>
               {product.reviews.length === 0 && <Message>No Reviews</Message>}
               <ListGroup variant='flush'>
                 {product.reviews.map(review => (

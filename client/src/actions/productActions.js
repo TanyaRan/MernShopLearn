@@ -109,11 +109,14 @@ export const deleteProduct = id => async (dispatch, getState) => {
 
 export const createProduct = (
   name,
-  price,
-  description,
   image,
-  brand,
+  place,
+  mountain,
   category,
+  startDate,
+  daysNumber,
+  description,
+  price,
   countInStock
 ) => async (dispatch, getState) => {
   try {
@@ -136,11 +139,14 @@ export const createProduct = (
       `/api/products`,
       {
         name: name,
-        price: price,
-        description: description,
         image: image,
-        brand: brand,
+        place: place,
+        mountain: mountain,
         category: category,
+        startDate: startDate,
+        daysNumber: daysNumber,
+        description: description,
+        price: price,
         countInStock: countInStock,
         user: userInfo._id
       },

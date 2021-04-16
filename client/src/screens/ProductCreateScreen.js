@@ -11,12 +11,15 @@ import { PRODUCT_CREATE_RESET } from '../constants/productConstants'
 
 const ProductCreateScreen = ({ history }) => {
   const [name, setName] = useState('')
-  const [price, setPrice] = useState(0)
   const [image, setImage] = useState('')
-  const [brand, setBrand] = useState('')
+  const [place, setPlace] = useState('')
+  const [mountain, setMountain] = useState('')
   const [category, setCategory] = useState('')
-  const [countInStock, setCountInStock] = useState(0)
+  const [startDate, setStartDate] = useState(null)
+  const [daysNumber, setDaysNumber] = useState(0)
   const [description, setDescription] = useState('')
+  const [price, setPrice] = useState(0)
+  const [countInStock, setCountInStock] = useState(0)
   const [uploading, setUploading] = useState(false)
 
   const dispatch = useDispatch()
@@ -68,11 +71,14 @@ const ProductCreateScreen = ({ history }) => {
     dispatch(
       createProduct(
         name,
-        price,
-        description,
         image,
-        brand,
+        place,
+        mountain,
         category,
+        startDate,
+        daysNumber,
+        description,
+        price,
         countInStock
       )
     )
@@ -100,6 +106,24 @@ const ProductCreateScreen = ({ history }) => {
                 onChange={e => setName(e.target.value)}></Form.Control>
             </Form.Group>
 
+            <Form.Group controlId='place'>
+              <Form.Label>Place</Form.Label>
+              <Form.Control
+                type='text'
+                placeholder='Enter place'
+                value={place}
+                onChange={e => setPlace(e.target.value)}></Form.Control>
+            </Form.Group>
+
+            <Form.Group controlId='mountain'>
+              <Form.Label>Mountain</Form.Label>
+              <Form.Control
+                type='text'
+                placeholder='Enter mountain'
+                value={mountain}
+                onChange={e => setMountain(e.target.value)}></Form.Control>
+            </Form.Group>
+
             <Form.Group controlId='price'>
               <Form.Label>Price</Form.Label>
               <Form.Control
@@ -107,6 +131,24 @@ const ProductCreateScreen = ({ history }) => {
                 placeholder='Enter price'
                 value={price}
                 onChange={e => setPrice(e.target.value)}></Form.Control>
+            </Form.Group>
+
+            <Form.Group controlId='startDate'>
+              <Form.Label>Start Date</Form.Label>
+              <Form.Control
+                type='date'
+                placeholder='Enter start date'
+                value={startDate}
+                onChange={e => setStartDate(e.target.value)}></Form.Control>
+            </Form.Group>
+
+            <Form.Group controlId='daysNumber'>
+              <Form.Label>Days Number</Form.Label>
+              <Form.Control
+                type='number'
+                placeholder='Enter days number'
+                value={daysNumber}
+                onChange={e => setDaysNumber(e.target.value)}></Form.Control>
             </Form.Group>
 
             <Form.Group controlId='image'>
@@ -122,15 +164,6 @@ const ProductCreateScreen = ({ history }) => {
                 custom
                 onChange={uploadFileHandler}></Form.File>
               {uploading && <Loader />}
-            </Form.Group>
-
-            <Form.Group controlId='brand'>
-              <Form.Label>Brand</Form.Label>
-              <Form.Control
-                type='text'
-                placeholder='Enter brand'
-                value={brand}
-                onChange={e => setBrand(e.target.value)}></Form.Control>
             </Form.Group>
 
             <Form.Group controlId='countInStock'>

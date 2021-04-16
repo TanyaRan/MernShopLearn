@@ -15,7 +15,11 @@ const productSchema = mongoose.Schema(
       type: String,
       required: true
     },
-    brand: {
+    place: {
+      type: String,
+      required: true
+    },
+    mountain: {
       type: String,
       required: true
     },
@@ -23,9 +27,28 @@ const productSchema = mongoose.Schema(
       type: String,
       required: true
     },
+    startDate: {
+      type: Date,
+      required: true
+    },
+    daysNumber: {
+      type: Number,
+      required: true,
+      default: 1
+    },
     description: {
       type: String,
       required: true
+    },
+    price: {
+      type: Number,
+      required: true,
+      default: 0
+    },
+    countInStock: {
+      type: Number,
+      required: true,
+      default: 0
     },
     reviews: [
       {
@@ -53,16 +76,6 @@ const productSchema = mongoose.Schema(
       default: 0
     },
     numReviews: {
-      type: Number,
-      required: true,
-      default: 0
-    },
-    price: {
-      type: Number,
-      required: true,
-      default: 0
-    },
-    countInStock: {
       type: Number,
       required: true,
       default: 0

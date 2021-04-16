@@ -62,11 +62,14 @@ const deleteProduct = asyncHandler(async (req, res) => {
 const createProduct = asyncHandler(async (req, res) => {
   const {
     name,
-    price,
-    description,
     image,
-    brand,
+    place,
+    mountain,
     category,
+    startDate,
+    daysNumber,
+    description,
+    price,
     countInStock
   } = req.body
 
@@ -79,11 +82,14 @@ const createProduct = asyncHandler(async (req, res) => {
 
   const product = await Product.create({
     name,
-    price,
-    description,
     image,
-    brand,
+    place,
+    mountain,
     category,
+    startDate,
+    daysNumber,
+    description,
+    price,
     countInStock,
     user: req.user._id
   })
@@ -104,11 +110,14 @@ const updateProduct = asyncHandler(async (req, res) => {
 
   if (product) {
     product.name = req.body.name || product.name
-    product.price = req.body.price || product.price
-    product.description = req.body.description || product.description
     product.image = req.body.image || product.image
-    product.brand = req.body.brand || product.brand
+    product.place = req.body.place || product.place
+    product.mountain = req.body.mountain || product.mountain
     product.category = req.body.category || product.category
+    product.startDate = req.body.startDate || product.startDate
+    product.daysNumber = req.body.daysNumber || product.daysNumber
+    product.description = req.body.description || product.description
+    product.price = req.body.price || product.price
     product.countInStock = req.body.countInStock || product.countInStock
 
     const updatedProduct = await product.save()
