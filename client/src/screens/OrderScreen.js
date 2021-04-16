@@ -44,6 +44,16 @@ const OrderScreen = ({ match, history }) => {
     order.itemsPrice = addDecimals(
       order.orderItems.reduce((acc, item) => acc + item.price * item.qty, 0)
     )
+
+    const productsCount = order.orderItems.map(item => {
+      const container = {}
+      container.prodId = item.product
+      container.count = item.qty
+
+      return container
+    })
+
+    console.log(productsCount)
   }
 
   useEffect(() => {
