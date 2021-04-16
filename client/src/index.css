@@ -19,3 +19,28 @@ h2 {
 .rating span {
   margin: 0.05rem;
 }
+
+.equal {
+  height: 35vh;
+}
+
+.tofit {
+  object-fit: cover;
+}
+
+.img-sizes {
+  width: 100vw;
+  height: 60vh;
+  object-fit: cover;
+}
+
+.caption {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
