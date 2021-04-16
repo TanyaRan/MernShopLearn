@@ -125,15 +125,17 @@ const ProductScreen = ({ history, match }) => {
                       </Row>
                     </ListGroup.Item>
                   )}
-                  <ListGroup.Item>
-                    <Button
-                      onClick={addToCartHandler}
-                      className='btn-block'
-                      type='button'
-                      disabled={product.countInStock === 0}>
-                      ADD TO CART
-                    </Button>
-                  </ListGroup.Item>
+                  {userInfo && (
+                    <ListGroup.Item>
+                      <Button
+                        onClick={addToCartHandler}
+                        className='btn-block'
+                        type='button'
+                        disabled={product.countInStock === 0}>
+                        ADD TO CART
+                      </Button>
+                    </ListGroup.Item>
+                  )}
                 </ListGroup>
               </Card>
             </Col>

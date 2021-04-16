@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react'
-import { Link } from 'react-router-dom'
 import { Carousel, Image } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Loader from './Loader'
@@ -21,21 +20,19 @@ const ProductCarousel = () => {
   ) : error ? (
     <Message variant='danger'>{error}</Message>
   ) : (
-    <Carousel pause='hover' className='bg-light'>
+    <Carousel className='bg-light'>
       {products.map(product => (
         <Carousel.Item key={product._id}>
-          <Link to={`/product/${product._id}`}>
-            <Image
-              src={product.image}
-              alt={product.name}
-              className='img-sizes'
-            />
-            <Carousel.Caption className='carousel-caption caption'>
-              <h2>
-                {product.name} (${product.price})
-              </h2>
-            </Carousel.Caption>
-          </Link>
+          <Image
+            src={product.image}
+            alt={product.name}
+            className='half-screen'
+          />
+          <Carousel.Caption className='carousel-caption caption-center'>
+            <h2 className='light-heading'>
+              We work with love and respect for people and the mountains!
+            </h2>
+          </Carousel.Caption>
         </Carousel.Item>
       ))}
     </Carousel>
