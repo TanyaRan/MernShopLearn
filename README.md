@@ -1,5 +1,7 @@
 # Mern Travel
 
+Link to deployed app: [Happy in Wild app](https://happyinwildapp.herokuapp.com/)
+
 ### SoftUni course 'React.js' project, to complete the course
 
 This is a project created for the diploma defense of the course **React.js**
