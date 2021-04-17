@@ -4,7 +4,7 @@ Link to deployed app: [Happy in Wild app](https://happyinwildapp.herokuapp.com/)
 
 ### SoftUni course 'React.js' project, to complete the course
 
-This is a project created for the diploma defense of the course **React.js**
+This is a project created for the diploma defense of the course _React.js_
 of **SoftUni, Bulgaria**.
 The application is designed to support and develop the work of the company 'Happy-in-Wild' and covers part of its activities.
 **Happy-in-Wild** deals with organizing short-term hikes in the mountains of Bulgaria, for 1, 2, 3 or 4 days, mainly for beginner tourists with low to medium physical training.
