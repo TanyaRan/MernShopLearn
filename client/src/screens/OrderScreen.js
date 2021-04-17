@@ -45,15 +45,13 @@ const OrderScreen = ({ match, history }) => {
       order.orderItems.reduce((acc, item) => acc + item.price * item.qty, 0)
     )
 
-    const productsCount = order.orderItems.map(item => {
-      const container = {}
-      container.prodId = item.product
-      container.count = item.qty
+    // const productsCount = order.orderItems.map(item => {
+    //   const container = {}
+    //   container.prodId = item.product
+    //   container.count = item.qty
 
-      return container
-    })
-
-    console.log(productsCount)
+    //   return container
+    // })
   }
 
   useEffect(() => {
@@ -87,7 +85,6 @@ const OrderScreen = ({ match, history }) => {
   }, [dispatch, orderId, successPay, successDeliver, order, history, userInfo])
 
   const successPaymentHandler = paymentResult => {
-    // console.log(paymentResult)
     dispatch(payOrder(orderId, paymentResult))
   }
 
